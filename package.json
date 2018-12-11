@@ -1,0 +1,24 @@
+{
+  "name": "text_to_speach",
+  "version": "1.0.0",
+  "description": "Text to speech web and pwa app using javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/I-Muhaimenul/text-to-speech-pwa.git"
+  },
+  "keywords": [
+    "PWA",
+    "speechSynthesis",
+    "API"
+  ],
+  "author": "Muhaimenul Islam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/I-Muhaimenul/text-to-speech-pwa/issues"
+  },
+  "homepage": "https://github.com/I-Muhaimenul/text-to-speech-pwa#readme"
+}
