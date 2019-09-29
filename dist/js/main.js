@@ -24,8 +24,9 @@ let voices = [];
 
 const getVoices = () => {
     voices = synth.getVoices();
+    console.log(voices)
     // Loop through voices and create an option for each one
-  voices.forEach(voice => {
+    voices.forEach(voice => {
     // Create option element
     const option = document.createElement('option');
     // Fill option with voice and language
@@ -39,8 +40,8 @@ const getVoices = () => {
 }
 
 //Line 35, 36 causes voice list duplication
-/*getVoices();
-if (synth.onvoiceschanged !== undefined) {
+// getVoices();
+/*if (synth.onvoiceschanged !== undefined) {
   synth.onvoiceschanged = getVoices;
 }*/
 
