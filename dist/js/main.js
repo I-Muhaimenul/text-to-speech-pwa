@@ -16,13 +16,14 @@ const body = document.querySelector('body');
 var isFirefox = typeof InstallTrigger !== 'undefined';
 
 // Chrome 1+
-var isChrome = !!window.chrome && !!window.chrome.webstore;
+// var isChrome = !!window.chrome && !!window.chrome.webstore;
+var isChrome = (!!window.chrome && !!window.chrome.webstore) || (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor))
 
 // Init voices array
 let voices = [];
 
 const getVoices = () => {
-    alert(2);
+
   voices = synth.getVoices();
 
   // Loop through voices and create an option for each one
@@ -50,6 +51,7 @@ if (isFirefox) {
     getVoices();
 }
 if (isChrome) {
+  
     if (synth.onvoiceschanged !== undefined) {
         synth.onvoiceschanged = getVoices;
     }
