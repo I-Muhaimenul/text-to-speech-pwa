@@ -1,9 +1,21 @@
 // Init SpeechSynth API
 const synth = window.speechSynthesis;
 
-// Init Speech bsaed on Firefox || Chrome
+// SpeechRecognition based on Firefox || Chrome
 window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
 
+// Init SpeechRecognition API
+let recognition = null;
+if ('SpeechRecognition' in window) {
+  // speech recognition API supported
+  recognition = new window.SpeechRecognition();
+
+  // setting recogntion config properties
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 10;
+  recognition.continuous = true;
+}
+alert(recognition)
 // DOM Elements
 const textForm = document.querySelector('form');
 const textInput = document.querySelector('#text-input');
@@ -127,10 +139,32 @@ voiceSelect.addEventListener('change', e => speak());
 
 
 // Speech recognition
-const strtListen = () => {
+const startListen = () => {
+  if (!recognition) {
+    console.error('Recognition not found...');
+    return;
+  }
+  let finalTranscript = '';
 
+    // initiate recognition with microphone permission
+    recognition.onresult = (event) => {
+        // const speechToText = event.results[0][0].transcript;
+      let interimTranscript = '';
+      for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
+        let transcript = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          finalTranscript += transcript;
+        } else {
+          interimTranscript += transcript;
+        }
+      }
+
+      textInput.value = finalTranscript + interimTranscript 
+      console.log(finalTranscript , interimTranscript )
+    }
+    recognition.start();
 }
 
 const stopListen = () => {
-
+    console.log(recognition.stop())
 }
