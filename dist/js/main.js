@@ -75,6 +75,9 @@ if (isChrome) {
 
 // Speak
 const speak = () => {
+  // stop listening
+  stopListen()
+
   // Check if speaking
   if (synth.speaking) {
     console.error('Already speaking...');
@@ -166,6 +169,7 @@ const startListen = () => {
 }
 
 const stopListen = () => {
+  console.log('Done listening')
   recognition.stop()
   listenBtn.innerHTML = 'Listen It'
     // console.log(recognition.stop())
@@ -177,7 +181,7 @@ listenBtn.addEventListener('click', e => {
   let btnText = listenBtn.innerHTML
   if(btnText == 'Listen It') {
     startListen();
-    listenBtn.innerHTML = 'Click to stop listening ...'
+    listenBtn.innerHTML = 'Listening ...'
   } else {
     stopListen();
     listenBtn.innerHTML = 'Listen It' 
