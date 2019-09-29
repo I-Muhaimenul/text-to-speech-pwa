@@ -22,7 +22,6 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 let voices = [];
 
 const getVoices = () => {
-    alert(2);
   voices = synth.getVoices();
 
   // Loop through voices and create an option for each one
