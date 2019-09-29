@@ -159,19 +159,29 @@ const startListen = () => {
           interimTranscript += transcript;
         }
       }
-
       textInput.value = finalTranscript + interimTranscript 
-      console.log(finalTranscript , interimTranscript )
+      // console.log(finalTranscript , interimTranscript )
     }
     recognition.start();
 }
 
 const stopListen = () => {
-    console.log(recognition.stop())
+  recognition.stop()
+  listenBtn.innerHTML = 'Listen It'
+    // console.log(recognition.stop())
 }
 
 // clicked on listen button
 listenBtn.addEventListener('click', e => {
-  console.log(e)
-  alert(23)
+  // listenBtn.text('wee')
+  let btnText = listenBtn.innerHTML
+  if(btnText == 'Listen It') {
+    startListen();
+    listenBtn.innerHTML = 'Click to stop listening ...'
+  } else {
+    stopListen();
+    listenBtn.innerHTML = 'Listen It' 
+  }
+  // console.log(listenBtn.innerHTML)
+  // alert(23)
 });
