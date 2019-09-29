@@ -1,6 +1,9 @@
 // Init SpeechSynth API
 const synth = window.speechSynthesis;
 
+// Init Speech bsaed on Firefox || Chrome
+window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+
 // DOM Elements
 const textForm = document.querySelector('form');
 const textInput = document.querySelector('#text-input');
@@ -121,3 +124,13 @@ pitch.addEventListener('change', e => (pitchValue.textContent = pitch.value));
 
 // Voice select change
 voiceSelect.addEventListener('change', e => speak());
+
+
+// Speech recognition
+const strtListen = () => {
+
+}
+
+const stopListen = () => {
+
+}
