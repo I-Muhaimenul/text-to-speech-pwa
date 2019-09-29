@@ -15,7 +15,7 @@ if ('SpeechRecognition' in window) {
   recognition.maxAlternatives = 10;
   recognition.continuous = true;
 }
-alert(recognition)
+
 // DOM Elements
 const textForm = document.querySelector('form');
 const textInput = document.querySelector('#text-input');
@@ -25,6 +25,8 @@ const rateValue = document.querySelector('#rate-value');
 const pitch = document.querySelector('#pitch');
 const pitchValue = document.querySelector('#pitch-value');
 const body = document.querySelector('body');
+
+const listenBtn = document.querySelector('#listen'); 
 
 //Browser identifier
 // Firefox 1.0+
@@ -66,7 +68,6 @@ if (isFirefox) {
     getVoices();
 }
 if (isChrome) {
-  
     if (synth.onvoiceschanged !== undefined) {
         synth.onvoiceschanged = getVoices;
     }
@@ -168,3 +169,9 @@ const startListen = () => {
 const stopListen = () => {
     console.log(recognition.stop())
 }
+
+// clicked on listen button
+listenBtn.addEventListener('click', e => {
+  console.log(e)
+  alert(23)
+});
