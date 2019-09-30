@@ -68,10 +68,11 @@ if (synth.onvoiceschanged !== undefined) {
 
 //Fix for duplication, run code depending on the browser
 if (isFirefox) {
-    getVoices();
+    // getVoices();
 }
+getVoices();
 if (isChrome) {
-  getVoices()
+  // getVoices()
     if (typeof synth !== 'undefined' && synth.onvoiceschanged !== undefined) {
         synth.onvoiceschanged = getVoices;
     }
@@ -152,6 +153,7 @@ const startListen = () => {
     console.error('Recognition not found...');
     return;
   }
+  console.log('Start listening')
   let finalTranscript = '';
 
     // initiate recognition with microphone permission
