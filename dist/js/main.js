@@ -41,8 +41,11 @@ let voices = [];
 
 const getVoices = () => {
 
-  voices = synth.getVoices();
+  if(typeof synth === 'undefined') {
+    return;
+  }
 
+  voices = synth.getVoices();
   // Loop through voices and create an option for each one
   voices.forEach(voice => {
     // Create option element
@@ -65,10 +68,12 @@ if (synth.onvoiceschanged !== undefined) {
 
 //Fix for duplication, run code depending on the browser
 if (isFirefox) {
-    getVoices();
+    // getVoices();
 }
+getVoices();
 if (isChrome) {
-    if (synth.onvoiceschanged !== undefined) {
+  // getVoices()
+    if (typeof synth !== 'undefined' && synth.onvoiceschanged !== undefined) {
         synth.onvoiceschanged = getVoices;
     }
 }
@@ -148,6 +153,7 @@ const startListen = () => {
     console.error('Recognition not found...');
     return;
   }
+  console.log('Start listening')
   let finalTranscript = '';
 
     // initiate recognition with microphone permission
